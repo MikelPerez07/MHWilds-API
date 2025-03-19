@@ -3,16 +3,13 @@ package com.mpm.entities;
 import java.io.Serial;
 import java.io.Serializable;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.PrimaryKeyJoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,31 +23,39 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "weapon_attack")
-public class WeaponAttack implements Serializable{
-	
+@Table(name = "weapon_sharpnesses")
+public class WeaponSharpness implements Serializable {
 	/**
-	 * 
-	 */
+	* 
+	*/
 	@Serial
-	private static final long serialVersionUID = -3157005971525514344L;
-	
-	@Id
+	private static final long serialVersionUID = -589643638804009156L;
+
 	@Column
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
+	@ManyToOne
 	@JoinColumn(name = "weapon")
-	@OneToOne
-	@JsonBackReference
 	private Weapon weapon;
-	
-	
+
 	@Column
-	private Integer display;
-	
-	@Column 
-	private Integer raw;
-	
+	private Integer red;
+
+	@Column
+	private Integer orange;
+
+	@Column
+	private Integer green;
+
+	@Column
+	private Integer blue;
+
+	@Column
+	private Integer white;
+
+	@Column
+	private Integer purple;
 
 }

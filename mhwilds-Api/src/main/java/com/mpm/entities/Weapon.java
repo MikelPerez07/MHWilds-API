@@ -2,7 +2,10 @@ package com.mpm.entities;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -10,6 +13,7 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -54,5 +58,20 @@ public class Weapon implements Serializable {
 
 	@Column
 	private Integer displayAttack;
+
+	@OneToMany(mappedBy = "weapon", cascade = CascadeType.ALL)
+	private List<WeaponSharpness> sharpnesses = new ArrayList<>();
+
+	@Column
+	private Integer craftable;
+
+	@OneToMany(mappedBy = "weapon")
+	private List<Material> craftingMaterials = new ArrayList<>();
+
+	@Column
+	private Integer upgradeable;
+
+	@OneToMany(mappedBy = "weapon")
+	private List<Material> upgradeMaterials = new ArrayList<>();
 
 }
