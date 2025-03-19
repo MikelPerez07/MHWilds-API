@@ -3,9 +3,6 @@ package com.mpm.entities;
 import java.io.Serial;
 import java.io.Serializable;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
-import jakarta.annotation.Generated;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -13,7 +10,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,29 +31,28 @@ public class Weapon implements Serializable {
 	 */
 	@Serial
 	private static final long serialVersionUID = 144440941218141261L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
 	private Long id;
-	
+
 	@Column
 	private String name;
-	
+
 	@Enumerated(EnumType.STRING)
 	private WeaponType type;
-	
+
 	@Enumerated(EnumType.STRING)
 	private DamageType damageType;
-	
+
 	@Column
 	private Integer rarity;
-	
-	@OneToOne(mappedBy = "weapon")
-	@JsonManagedReference
-	private WeaponAttack weaponAttack;
-	
-	
 
-	
+	@Column
+	private Integer rawAttack;
+
+	@Column
+	private Integer displayAttack;
+
 }
