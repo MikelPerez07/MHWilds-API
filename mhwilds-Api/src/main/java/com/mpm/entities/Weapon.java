@@ -74,4 +74,10 @@ public class Weapon implements Serializable {
 	@OneToMany(mappedBy = "weapon")
 	private List<Material> upgradeMaterials = new ArrayList<>();
 
+	@Column
+	private String icon;
+
+	@Column
+	private String image;
+
 }

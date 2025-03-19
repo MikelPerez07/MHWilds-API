@@ -2,6 +2,7 @@ package com.mpm.entities;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,16 +19,16 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "items")
-public class Item implements Serializable {
+@ToString
+@Table(name = "skills")
+public class Skill implements Serializable {
 	/**
 	* 
 	*/
 	@Serial
-	private static final long serialVersionUID = 2700991092208683250L;
+	private static final long serialVersionUID = 7741025575302767560L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,18 +42,6 @@ public class Item implements Serializable {
 	private String description;
 
 	@Column
-	private Integer material;
-
-	@Column
-	private Integer rarity;
-
-	@Column
-	private Integer carryLimit;
-
-	@Column
-	private Integer value;
-
-	@Column
-	private String icon;
+	private List<Rank> ranks;
 
 }
