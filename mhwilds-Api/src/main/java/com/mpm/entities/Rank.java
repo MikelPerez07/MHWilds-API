@@ -2,6 +2,7 @@ package com.mpm.entities;
 
 import java.io.Serial;
 import java.io.Serializable;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -18,41 +19,35 @@ import lombok.ToString;
 @Entity
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "items")
-public class Item implements Serializable {
+@ToString
+@Table(name = "ranks")
+public class Rank implements Serializable {
 	/**
 	* 
 	*/
 	@Serial
-	private static final long serialVersionUID = 2700991092208683250L;
+	private static final long serialVersionUID = 3035837219903399465L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	@Column
-	private String name;
+	private Long skill;
+
+	@Column
+	private Integer level;
+
+	@Column
+	private List<Modifier> modifiers;
 
 	@Column
 	private String description;
 
 	@Column
-	private Integer material;
-
-	@Column
-	private Integer rarity;
-
-	@Column
-	private Integer carryLimit;
-
-	@Column
-	private Integer value;
-
-	@Column
-	private String icon;
+	private String skillName;
 
 }
